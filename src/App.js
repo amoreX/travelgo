@@ -1,7 +1,7 @@
 import './App.scss';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Landing from "./Components/Landing/Landing.tsx"
-import Content from "./Components/Content/Content.tsx"
+import Landing from "./Components/Landing/Landing.js"
+import Content from "./Components/Content/Content.js"
 const router=createBrowserRouter([
   {
     path: "/",
