@@ -1,6 +1,6 @@
 //Landing page upon visiting the site
 
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Landing.scss";
 
@@ -36,18 +36,23 @@ export default function Landing() {
   );
   const City_list = ["Mumbai", "Kolkata", "Goa"];
   const [search, setSearch] = useState("");
-  const navcity=(input)=>{
-    console.log(input); // update city to be searched here 
+  const navcity = (input) => {
+    console.log(input); // update city to be searched here
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(search);
-  },[search]);
+  }, [search]);
   return (
     <motion.div
       id="main-container"
       initial={{ opacity: 0 }}
-      transition={{ type: "tween", ease: "easeInOut", duration: 0.5,delay:0.5 }}
+      transition={{
+        type: "tween",
+        ease: "easeInOut",
+        duration: 0.5,
+        delay: 0.5,
+      }}
       animate={{ opacity: 1 }}
     >
       <motion.div
@@ -68,7 +73,7 @@ export default function Landing() {
           id="input-field"
           type="text"
           placeholder="try bengaluru..."
-          onChange={(e)=>setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         ></motion.input>
         <motion.div
           initial={{ opacity: 0 }}
@@ -79,12 +84,18 @@ export default function Landing() {
         </motion.div>
       </motion.div>
       <div id="suggestions">
-        {City_list.map((city,index)=>{
-          return(
-            <div id="city" key={index} onClick={()=>navcity(city)}>{city}</div>
-          )
+        {City_list.map((city, index) => {
+          return (
+            <motion.div id="city" key={index} onClick={() => navcity(city)}
+            initial={{y:20,opacity:0}}
+            transition={{type:"tween",delay:1.5+index*0.1}}
+            animate={{y:0,opacity:1}}
+            >
+              {city}
+            </motion.div>
+          );
         })}
-        </div>
+      </div>
     </motion.div>
   );
 }
