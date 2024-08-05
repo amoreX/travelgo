@@ -17,6 +17,7 @@ body {
     position: absolute;
     width: 100vw;
     height: 100vh;
+    gap:5px;
     background: linear-gradient(45deg, #ffe9fa, #d7e0fe , #f8e8ff );
     @include layout-content();
 
@@ -61,7 +62,18 @@ body {
       }
     }
     #suggestions {
+      display: flex;
+      gap:5px;
+      font-size: 10px;
       margin-left: 8%;
+      #city{
+        box-sizing: border-box;
+        padding:4px;
+        border-radius: 4px;
+        color:white;
+        background-color: rgba(56, 21, 82, 0.6);
+        cursor: pointer;
+      }
     }
   }
 }
