@@ -1,6 +1,6 @@
 //Landing page upon visiting the site
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Landing.scss";
 
@@ -34,33 +34,57 @@ export default function Landing() {
       />
     </svg>
   );
+  const City_list = ["Mumbai", "Kolkata", "Goa"];
+  const [search, setSearch] = useState("");
+  const navcity=(input)=>{
+    console.log(input); // update city to be searched here 
+  };
+
+  useEffect(()=>{
+    console.log(search);
+  },[search]);
   return (
-    <motion.div id="main-container"
-    initial={{opacity:0}}
-      transition={{type:"tween",ease:"easeInOut",duration:0.5}}
-      animate={{opacity:1}}>
-      <motion.div id="search-container"
-      initial={{opacity:0}}
-      transition={{type:"tween",ease:"easeInOut",duration:0.3,delay:0.4}}
-      animate={{opacity:1}}
+    <motion.div
+      id="main-container"
+      initial={{ opacity: 0 }}
+      transition={{ type: "tween", ease: "easeInOut", duration: 0.5,delay:0.5 }}
+      animate={{ opacity: 1 }}
+    >
+      <motion.div
+        id="search-container"
+        initial={{ opacity: 0 }}
+        transition={{
+          type: "tween",
+          ease: "easeInOut",
+          duration: 0.3,
+          delay: 1,
+        }}
+        animate={{ opacity: 1 }}
       >
         <motion.input
           initial={{ width: "0px" }}
-          transition={{ type: "tween", ease: "easeInOut", delay: 1 }}
+          transition={{ type: "tween", ease: "easeInOut", delay: 1.5 }}
           animate={{ width: "64vw" }}
           id="input-field"
           type="text"
           placeholder="try bengaluru..."
+          onChange={(e)=>setSearch(e.target.value)}
         ></motion.input>
         <motion.div
           initial={{ opacity: 0 }}
-          transition={{ type: "tween", ease: "easeInOut", delay: 1 }}
+          transition={{ type: "tween", ease: "easeInOut", delay: 1.5 }}
           animate={{ opacity: 1 }}
         >
           {search_icon}
         </motion.div>
       </motion.div>
-      {/* <div id="suggestions">kkk</div> */}
+      <div id="suggestions">
+        {City_list.map((city,index)=>{
+          return(
+            <div id="city" key={index} onClick={()=>navcity(city)}>{city}</div>
+          )
+        })}
+        </div>
     </motion.div>
   );
 }
