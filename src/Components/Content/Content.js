@@ -5,7 +5,7 @@ export default function Content(){
         <div id="main-container-content">
             <div id="container">
                 <div id="noti">
-                    <div id="left">Bengaluru</div>
+                    <div id="left">bengaluru</div>
                     <div id="right">search</div>
                 </div>
                 <div id="content">
