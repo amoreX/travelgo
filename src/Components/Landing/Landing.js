@@ -9,7 +9,7 @@ import "./Landing.scss";
 
 export default function Landing() {
   const shift = useNavigate();
-  const [cityList,setCityList]=useState(["Mumbai", "Kolkata", "Goa"]);
+  const [cityList,setCityList]=useState(["mumbai", "kolkata", "goa"]);
   const [search, setSearch] = useState("");
 
   const changePage=(input)=>{
@@ -23,7 +23,7 @@ export default function Landing() {
   useEffect(() => {
     // console.log(search.length);
     if (search.length==0){
-      setCityList(["Mumbai","Kolkata","Goa"]);
+      setCityList(["mumbai","kolkata","goa"]);
     }
     else{
       const newSugg=async()=>{
@@ -86,7 +86,7 @@ export default function Landing() {
             transition={{type:"tween",delay:1.5+index*0.1}}
             animate={{y:0,opacity:1}}
             >
-              {city}
+              {city.toLowerCase()}
             </motion.div>
           );
         })}
