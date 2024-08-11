@@ -11,7 +11,69 @@ body {
   justify-content: center;
   //   align-items: center;
 }
+#main-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  gap:8px;
+  background: linear-gradient(45deg, #ffe9fa, #d7e0fe , #f8e8ff );
+  @include layout-content();
 
+  #search-container {
+    width: 28vw;
+    margin-inline: auto;
+    height: 6vh;
+  //   background-color: red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 56px;
+    padding: 4px; /* Add padding to make room for the border */
+    background-clip: padding-box;
+    
+    z-index: 2;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 30vw;
+      height: 6vh;
+      border-radius: 56px;
+      padding: 4px; /* Ensure this matches the padding on the container */
+      background: linear-gradient(45deg, rgba(41, 151, 185, 0.6), rgba(58, 101, 184, 0.6), rgba(191, 61, 162, 0.6),rgba(212, 73, 115, 0.6));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      z-index: -1; /* Ensure it is behind the container's content */
+    }
+
+    #input-field {
+      height: 8vh;
+      width: 64vw;
+      border-radius: 56px;
+      background-color: rgba(110, 105, 105, 0);
+      border: 0px;
+      outline: none;
+      font-family: "Instrument Sans", sans-serif;
+    font-weight: 400;
+    }
+  }
+  #suggestions {
+    display: flex;
+    gap:8px;
+    font-size: 16px;
+    margin-left: 35%;
+    #city{
+      box-sizing: border-box;
+      padding:4px;
+      border-radius: 4px;
+      color:white;
+      background-color: rgba(56, 21, 82, 0.6);
+      cursor: pointer;
+    }
+  }
+}
 @media screen and (max-width: 1100px) {
   #main-container {
     position: absolute;
