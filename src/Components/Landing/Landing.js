@@ -22,17 +22,18 @@ export default function Landing() {
 
   useEffect(() => {
     // console.log(search.length);
-    if (search.length<2){
+    if (search.length==0){
       setCityList(["Mumbai","Kolkata","Goa"]);
     }
     else{
       const newSugg=async()=>{
         let newSuggestions=await  Suggestion(search);
         console.log(newSuggestions);
-        newSuggestions=newSuggestions.split(",");
+        // newSuggestions=newSuggestions.split(",");
         setCityList(newSuggestions);
       };
       newSugg();
+      
     }
   }, [search]);
 
