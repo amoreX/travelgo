@@ -42,14 +42,14 @@ body {
       flex-direction: column;
       #row-1 {
         width: 100%;
-        height: 50%;
+        height: 47%;
         // background-color: grey;
         display: flex;
         gap: 10px;
         #weather {
           height: 100%;
           background-color: whitesmoke;
-          flex: 0.6;
+          flex: 0.8;
           border-radius: 16px;
         }
         #weather-2 {
@@ -67,7 +67,7 @@ body {
       }
       #row-2 {
         width: 100%;
-        height: 50%;
+        height: 53%;
         // background-color: grey;
         display: flex;
         gap: 10px;
