@@ -7,7 +7,7 @@ body {
 #main-container-content {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(45deg, #F1FEF8, #E4FFF2);
+  background: linear-gradient(45deg, #f1fef8, #e4fff2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,24 +52,40 @@ body {
           background-color: #fff;
           flex: 0.8;
           border-radius: 24px;
-          border: 2.5px solid rgb(32, 70 , 41, 0.25);
+          border: 2.5px solid rgb(32, 70, 41, 0.25);
           display: flex;
-          justify-content: center;
+          flex-direction: column;
+          justify-content: space-around;
           align-items: center;
+          box-sizing: border-box;
+          font-family: "Instrument Sans", sans-serif;
+          letter-spacing: -1px;
+          // padding: 10px;
+          #info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content:center;
+            height: 80%;
+            width: 100%;
+            box-sizing: border-box;
+            padding-block: 10px;
+            // background-color: grey;
+          }
         }
         #weather-2 {
           height: 100%;
           background-color: #fff;
           flex: 2;
           border-radius: 24px;
-          border: 2.5px solid rgb(32, 70 , 41, 0.25);
+          border: 2.5px solid rgb(32, 70, 41, 0.25);
         }
         #weather-3 {
           height: 100%;
           background-color: #fff;
           flex: 1.5;
           border-radius: 24px;
-          border: 2.5px solid rgb(32, 70 , 41, 0.25);
+          border: 2.5px solid rgb(32, 70, 41, 0.25);
         }
       }
       #row-2 {
@@ -83,18 +99,18 @@ body {
           background-color: #fff;
           flex: 1.2;
           border-radius: 24px;
-          border: 2.5px solid rgb(32, 70 , 41, 0.25);
+          border: 2.5px solid rgb(32, 70, 41, 0.25);
         }
         #weather-2 {
           height: 100%;
           background-color: #ffff;
           flex: 2;
           border-radius: 24px;
-          border: 2.5px solid rgb(32, 70 , 41, 0.25);
+          border: 2.5px solid rgb(32, 70, 41, 0.25);
         }
       }
     }
-    #weather-container{
+    #weather-container {
       width: 95vw;
       height: 82vw;
       box-sizing: border-box;
