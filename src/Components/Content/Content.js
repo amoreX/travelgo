@@ -43,7 +43,7 @@ export default function Content() {
           <div id="right">search</div>
         </div>
         {isweather === true ? (
-          <Weather toggle={setWeather} />
+          <Weather toggle={setWeather} data={weatherData} />
         ) : (
           <div id="content">
             <motion.div
