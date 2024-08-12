@@ -35,7 +35,7 @@ body {
     }
     #content {
       width: 95vw;
-      height: 82vw;
+      height: 82vh;
       box-sizing: border-box;
       padding: 32px;
       display: flex;
@@ -112,10 +112,75 @@ body {
     }
     #weather-container {
       width: 95vw;
-      height: 82vw;
+      height: 82vh;
       box-sizing: border-box;
       padding: 32px;
-      background-color: #fff;
+      // margin-top: 15px;
+      background-color: rgba(217, 255, 228, 1);
+      border: 2.5px solid rgb(32, 70, 41, 0.25);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      #back{
+        position:absolute;
+        top:5%;
+        left:2.5%;
+        cursor: pointer;
+      }
+      #today{
+        height:50%;
+        width:100%;
+        // background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content:center;
+          height: 80%;
+          width: 100%;
+          box-sizing: border-box;
+          padding-block: 10px;
+          // background-color: grey;
+        }
+      }
+      #weeks{
+        // background-color: grey;
+        height:50%;
+        width:100%;
+        display: flex;
+        // justify-content: center;
+        gap:32px;
+        align-items: center;
+        #card{
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content:space-between;
+          height: 95%;
+          width: 50%;
+          box-sizing: border-box;
+          padding-block: 10px;
+          // background-color: black;
+          border-radius: 24px;
+          border: 2.5px solid rgb(32, 70, 41, 0.25);
+          #information{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content:center;
+
+          }
+
+        }
+      }
+
     }
   }
 }
