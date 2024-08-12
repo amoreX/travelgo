@@ -15,6 +15,7 @@ export default function Landing() {
   const changePage=(input)=>{
     //update city name in useContext here
     console.log(input);
+    localStorage.setItem("location",input);
     setTimeout(()=>{
       shift("/content");
     },2000);
@@ -22,7 +23,7 @@ export default function Landing() {
 
   useEffect(() => {
     // console.log(search.length);
-    if (search.length==0){
+    if (search.length===0){
       setCityList(["mumbai","kolkata","goa"]);
     }
     else{

@@ -14,7 +14,6 @@ import { cities_list } from "./vars";
 
 export async function Suggestion(toSearch){
   const cities=cities_list.split(",");
-  const len=toSearch.length;
   let res=[];
   for (let i=0;i<cities.length;i++){
     
@@ -22,7 +21,7 @@ export async function Suggestion(toSearch){
       res.push(cities[i]);
     }
   }
-  if (res[0]==res[1] || res[0]==res[2] || res[1]==res[2]){
+  if (res[0]===res[1] || res[0]===res[2] || res[1]===res[2]){
     return res.splice(0,1);
   }
   else{
