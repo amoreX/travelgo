@@ -131,23 +131,29 @@ body {
               // border: 2.5px solid rgb(32, 70, 41, 0.25);
               border-radius: 24px;
               max-width: 20%;
-              height:100%;
-              #picture {
-                flex: 2;
-                overflow: hidden;
-                height:80%;
-                img{
-                  height:200px;
-                  width:100%;
-                  border-radius: 24px;
+              height: 100%;
+              gap:16px;
+
+              img {
+                height: 200px;
+                width: 100%;
+                border-radius: 24px;
+                transition:0.38s ease-in-out ;
+                cursor:pointer;
+                &:hover{
+                  scale:1.05;
+                  border-radius: 4px;
+                  // height:220px;
                 }
               }
-              #cook{
+
+              #cook {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
+                gap:4px;
                 overflow: hidden;
               }
-
             }
           }
         }
