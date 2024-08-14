@@ -2,6 +2,7 @@ import "./Content.scss";
 import { motion } from "framer-motion";
 import Weather from "./weather.js";
 import WeatherCard from "./Row-1/weathercard.js";
+import Placestovisit from "./Row-2/placestovisit.js";
 import { useState, useEffect } from "react";
 import { coords } from "../Utils/coords.js";
 import { getcoords } from "../Utils/gettingCoords.js";
@@ -62,7 +63,7 @@ export default function Content() {
             animate={{ x: transition === false ? 0 : 2000 }}
             >
               <div id="weather"></div>
-              <div id="weather-2"></div>
+              <Placestovisit city={pp} />
             </motion.div>
           </div>
         )}
