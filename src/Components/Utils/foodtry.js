@@ -3,7 +3,7 @@ const cache = {};
 
 export async function FoodTry(city) {
 //   console.log(city);
-  const genAI = new GoogleGenerativeAI("AIzaSyCpSvYvxAYQEGFtfBBMEI4R-9M6V-H_uwM");
+  const genAI = new GoogleGenerativeAI("AIzaSyBYm_TyKpW2rrhyOZSekvc1BlUP9_SKJYA");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   if (cache[city]) {
     return cache[city];
