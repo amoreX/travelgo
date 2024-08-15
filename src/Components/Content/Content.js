@@ -56,7 +56,7 @@ export default function Content() {
             >
               <WeatherCard transition={setWeather} data={weatherData}/>
               
-              <div id="weather-2"></div>
+              <Food city={pp}/>
               <div id="weather-3"></div>
             </motion.div>
             <motion.div id="row-2"
