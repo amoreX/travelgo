@@ -76,7 +76,7 @@ export default function Food({ city }) {
         }
         </div>
 
-        <div id="title">food to try</div>
+        <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px" }}>food to try</div>
 
       </div>
     );

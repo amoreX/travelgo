@@ -54,7 +54,7 @@ export default function Placestovisit({ city }) {
         <div>loading...</div>
         }
       </div>
-      <div id="title">places to visit</div>
+      <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px" }}>places to visit</div>
     </div>
   );
 }
