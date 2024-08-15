@@ -18,7 +18,7 @@ export default function Landing() {
     localStorage.setItem("location",input);
     setTimeout(()=>{
       shift("/content");
-    },2000);
+    },500);
   };
 
   useEffect(() => {
