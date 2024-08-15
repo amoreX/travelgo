@@ -17,6 +17,7 @@ body {
     height: 90vh;
     // background-color: white;
     display: flex;
+    cursor: default;
     flex-direction: column;
     #noti {
       width: 95vw;
@@ -86,8 +87,6 @@ body {
           padding-block: 8px;
           box-sizing: border-box;
 
-
-
           #content-foods {
             display: flex;
             width: 100%;
@@ -127,16 +126,48 @@ body {
                 gap: 4px;
                 overflow: hidden;
               }
-
             }
           }
         }
-        #weather-3 {
+        #things-container {
           height: 100%;
           background-color: #fff;
           flex: 1.5;
           border-radius: 24px;
           border: 2.5px solid rgb(32, 70, 41, 0.25);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          box-sizing: border-box;
+          padding-block: 8px;
+          #content-things {
+            width: 100%;
+            height: 90%;
+            // background-color: red;
+            box-sizing: border-box;
+            padding-inline: 16px;
+
+            #things {
+              #each-thing {
+                display: flex;
+                flex-direction: column;
+                gap:5px;
+                color: rgba(32, 70, 41, 0.75);
+
+                #bar {
+                  border: none;
+                  border-top: 4px dotted rgba(32, 70, 41, 0.25);
+                  color: #fff;
+                  background-color: #fff;
+                  height: 1px;
+                  display: flex;
+                  margin-inline: auto;
+                  width: 100%;
+                }
+              }
+            }
+          }
         }
       }
       #row-2 {
