@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Weather from "./weather.js";
 import WeatherCard from "./Row-1/weathercard.js";
 import Placestovisit from "./Row-2/placestovisit.js";
+import Food from "./Row-1/fooddetails.js";
 import { useState, useEffect } from "react";
 import { coords } from "../Utils/coords.js";
 import { getcoords } from "../Utils/gettingCoords.js";
@@ -54,6 +55,7 @@ export default function Content() {
               animate={{ x: transition === false ? 0 : -2000 }}
             >
               <WeatherCard transition={setWeather} data={weatherData}/>
+              
               <div id="weather-2"></div>
               <div id="weather-3"></div>
             </motion.div>

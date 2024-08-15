@@ -44,7 +44,7 @@ export default function Placestovisit({ city }) {
                 <img src={pictureUrl} alt="loading..."/>
                 <div id="cook">
                 <div id="name" style={{fontSize:"20px"}}>{name}</div>
-                <div id="desc" style={{color:"grey",fontSize:"16px"}} >{description.substring(0,69)} {(description.length > 70 ? "..." : null)}</div>
+                <div id="desc" style={{color:"grey",fontSize:"16px"}} >{description.substring(0,64)} {(description.length > 70 ? "..." : null)}</div>
 
                 </div>
               </div>
