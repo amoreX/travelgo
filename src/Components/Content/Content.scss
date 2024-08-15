@@ -61,6 +61,7 @@ body {
           box-sizing: border-box;
           font-family: "Instrument Sans", sans-serif;
           letter-spacing: -1px;
+          position: relative;
           // padding: 10px;
           #info {
             display: flex;
@@ -73,6 +74,22 @@ body {
             padding-block: 10px;
             // background-color: grey;
           }
+          #loading{
+            // position:absolute;
+            // top:50%;
+            // left:50%;
+            animation: load 1s infinite linear;
+          }
+          @keyframes load {
+            0% {
+              rotate: 0deg;
+            }
+          
+            100% {
+              rotate: 360deg;
+            }
+          }
+          
         }
         #foodtotry {
           height: 100%;
@@ -127,6 +144,22 @@ body {
                 overflow: hidden;
               }
             }
+
+            #loading {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              animation: load 1s infinite linear;
+            }
+            @keyframes load {
+              0% {
+                rotate: 0deg;
+              }
+
+              100% {
+                rotate: 360deg;
+              }
+            }
           }
         }
         #things-container {
@@ -147,12 +180,13 @@ body {
             // background-color: red;
             box-sizing: border-box;
             padding-inline: 16px;
+            position: relative;
 
             #things {
               #each-thing {
                 display: flex;
                 flex-direction: column;
-                gap:5px;
+                gap: 5px;
                 color: rgba(32, 70, 41, 0.75);
 
                 #bar {
@@ -165,6 +199,21 @@ body {
                   margin-inline: auto;
                   width: 100%;
                 }
+              }
+            }
+            #loading {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              animation: load 1s infinite linear;
+            }
+            @keyframes load {
+              0% {
+                rotate: 0deg;
+              }
+
+              100% {
+                rotate: 360deg;
               }
             }
           }
@@ -235,6 +284,21 @@ body {
                 // align-items: center;
                 gap: 4px;
                 overflow: hidden;
+              }
+            }
+            #loading {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              animation: load 1s infinite linear;
+            }
+            @keyframes load {
+              0% {
+                rotate: 0deg;
+              }
+
+              100% {
+                rotate: 360deg;
               }
             }
           }
