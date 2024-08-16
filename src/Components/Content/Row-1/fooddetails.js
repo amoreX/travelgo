@@ -7,7 +7,6 @@ import { GettingPictures } from "../../Utils/gettingpictures";
 export default function Food({ city }) {
   const [foods, setFoods] = useState(null);
   const [foodDetails, setFoodDetails] = useState(null);
-  const [error, setError] = useState(null); // Add state to store error
 
   const loading = (
     <svg
@@ -28,12 +27,10 @@ export default function Food({ city }) {
 
   useEffect(() => {
     const gettingFoods = async () => {
-      
-        setTimeout(async () => {
-          let q = await FoodTry(city);
-          setFoods(q.split(","));
-        }, 5000);
-      
+      setTimeout(async () => {
+        let q = await FoodTry(city);
+        setFoods(q.split(","));
+      }, 100);
     };
 
     gettingFoods();
@@ -42,24 +39,35 @@ export default function Food({ city }) {
   useEffect(() => {
     if (foods) {
       const getFoodandDetails = async () => {
-        try {
-          const promises = foods.map(async (food) => {
-            const description = await Details(food);
-            const picUrl = await GettingPictures(food);
-            return { name: food, description, picUrl };
-          });
+        const promises = foods.map(async (food) => {
+          const description = await Details(food);
+          // const picUrl = await GettingPictures(food);
+          return { name: food, description };
+        });
 
-          const updatedDetails = await Promise.all(promises);
-          setFoodDetails(updatedDetails);
-        } catch (err) {
-          setError(err); // Store the error if it occurs
-          // console.error("Error fetching food details:", err); // Log the error for debugging
-        }
+        const updatedDetails = await Promise.all(promises);
+        setFoodDetails(updatedDetails);
       };
 
       getFoodandDetails();
     }
   }, [foods]);
+
+  useEffect(() => {
+    if (foodDetails) {
+      const getFoodPictures = async () => {
+        const updatedFoodDetails = foodDetails.map(async (foodObj) => {
+          const pictureUrl = await GettingPictures(foodObj.name);
+          return { ...foodObj, pictureUrl };
+        });
+
+        const finalDetails = await Promise.all(updatedFoodDetails);
+        setFoodDetails(finalDetails); // Update state with pictures
+      };
+
+      getFoodPictures();
+    }
+  }, [foodDetails]);
 
   useEffect(() => {
     console.log(foodDetails);
@@ -69,24 +77,31 @@ export default function Food({ city }) {
       <div id="content-foods">
         {foodDetails != null ? (
           foodDetails.map((placeObj, ind) => {
-            const { name, description, picUrl } = placeObj;
+            const { name, description, pictureUrl } = placeObj;
             return (
               <div id="foo" key={ind}>
-                <motion.img
-                  src={picUrl}
-                  alt="loading..."
-                  initial={{ scale: 0.1, opacity: 0 }}
+                {pictureUrl && ( // Conditionally render image if available
+                  <motion.img
+                    src={pictureUrl}
+                    alt="loading..."
+                    initial={{ scale: 0.1, opacity: 0 }}
+                    transition={{
+                      type: "tween",
+                      delay: 0.2 + ind * 0.1,
+                      duration: 0.28,
+                    }}
+                    animate={{ scale: 1, opacity: 1 }}
+                  />
+                )}
+                <motion.div
+                  id="cook-food"
+                  initial={{ y: 20, opacity: 0 }}
                   transition={{
                     type: "tween",
-                    delay: 0.2+ind * 0.1,
+                    delay: 0.4 + ind * 0.1,
                     duration: 0.28,
                   }}
-                  animate={{ scale: 1, opacity: 1 }}
-                />
-                <motion.div id="cook-food" 
-                initial={{y:20,opacity:0}}
-                transition={{type:"tween",delay:0.4+ind*0.1,duration:0.28}}
-                animate={{y:0,opacity:1}}
+                  animate={{ y: 0, opacity: 1 }}
                 >
                   <div id="name" style={{ fontSize: "20px" }}>
                     {name}
