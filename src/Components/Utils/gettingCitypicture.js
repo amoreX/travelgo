@@ -9,16 +9,21 @@ export async function GettingPictures(place){
     //     setUrl(photos.photos[0].url);
     //     return(photos.photos[0].url);
     // });
-    if (cache[place]) {
+    if (cache[place]!=undefined) {
         return cache[place];
       }
+      const response= await client.photos.search({ query, per_page: 1 });
+      // console.log(response);
     
-
-    const response= await client.photos.search({ query, per_page: 1 });
-    console.log(response);
-    const pictureUrl= response.photos[0].src.landscape;
-    // console.log(pictureUrl);
-    cache[place] = pictureUrl;
-    return (pictureUrl);
+    try{
+      const pictureUrl= response.photos[0].src.landscape;
+      // console.log(pictureUrl);
+      cache[place] = pictureUrl;
+      return (pictureUrl);
+    }
+    catch(err){
+      console.log(response);
+      return undefined
+    }
 
 }

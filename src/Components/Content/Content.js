@@ -55,7 +55,7 @@ export default function Content() {
   }, []);
 
   useEffect(()=>{
-    console.log(weatherData);
+    // console.log(weatherData);
   },[weatherData])
   return (
     <div id="main-container-content">
