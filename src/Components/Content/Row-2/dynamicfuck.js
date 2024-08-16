@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Travel } from "../../Utils/gettingTravel";
 import { GettingPictures } from "../../Utils/gettingCitypicture";
+import { GettingHigh } from "../../Utils/gettinghighqualitypic";
 export default function Dynamic({ city,dynamic,changeD }) {
     const loading = (
         <svg
@@ -35,10 +36,14 @@ export default function Dynamic({ city,dynamic,changeD }) {
   });
 
   useEffect(()=>{
-    if(dynamic){
-      setNew(dynamic[0]);
-      setNewTravel(dynamic[1]);
-    }
+    const temp=async()=>{
+      if(dynamic){
+        let kk=await GettingHigh(dynamic[0]);
+        setNew(kk);
+        setNewTravel(dynamic[1]);
+      }
+    };
+    temp();
   },[dynamic]);
 
 

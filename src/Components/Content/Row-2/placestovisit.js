@@ -62,7 +62,7 @@ export default function Placestovisit({ city,changeD }) {
                                 initial={{scale:0.1,opacity:0}}
                                 transition={{type:"tween",delay:ind*0.1,duration:0.28}}
                                 animate={{scale:1,opacity:1}}
-                                onClick={()=>{changeD(pictureUrl,description)}}
+                                onClick={()=>{changeD(name,description)}}
                 />
                 <motion.div id="cook"
                 initial={{y:20,opacity:0}}
