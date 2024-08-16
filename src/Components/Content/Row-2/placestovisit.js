@@ -58,19 +58,22 @@ export default function Placestovisit({ city,changeD }) {
             const { name, description,pictureUrl } = placeObj; 
             return (
               <div id="cit" key={ind}>
+                <div id="pp">
                 <motion.img src={pictureUrl} alt="loading..." 
                                 initial={{scale:0.1,opacity:0}}
                                 transition={{type:"tween",delay:ind*0.1,duration:0.28}}
                                 animate={{scale:1,opacity:1}}
                                 onClick={()=>{changeD(name,description)}}
                 />
+
+                </div>
                 <motion.div id="cook"
                 initial={{y:20,opacity:0}}
                 transition={{type:"tween",delay:0.4+ind*0.1,duration:0.28}}
                 animate={{y:0,opacity:1}}
                 >
-                <div id="name" style={{fontSize:"20px"}}>{name.toLowerCase().substring(0,20)} {(name.length > 20 ? "..." : null)}</div>
-                <div id="desc" style={{color:"grey",fontSize:"16px"}} >{description.substring(0,45)} {(description.length > 70 ? "...more" : null)}</div>
+                <div id="name" style={{fontSize:"1.3vw"}}>{name.toLowerCase().substring(0,20)} {(name.length > 20 ? "..." : null)}</div>
+                <div id="desc" style={{color:"grey",fontSize:"1vw"}} >{description.substring(0,45)} {(description.length > 70 ? "...more" : null)}</div>
 
                 </motion.div>
               </div>
@@ -80,7 +83,7 @@ export default function Placestovisit({ city,changeD }) {
         <div id="loading">{loading}</div>
         }
       </div>
-      <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px",letterSpacing:"-1px" }}>places to visit</div>
+      <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "1vw",letterSpacing:"-1px" }}>places to visit</div>
     </div>
   );
 }
