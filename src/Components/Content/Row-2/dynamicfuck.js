@@ -36,7 +36,6 @@ export default function Dynamic({ city,dynamic,changeD }) {
     if(dynamic){
       setPicUrl(dynamic[0]);
       setTravelDetails(dynamic[1]);
-
     }
   },[dynamic])
 
