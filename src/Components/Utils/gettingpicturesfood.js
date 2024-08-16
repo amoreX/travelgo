@@ -9,7 +9,7 @@ export async function GettingPicturesFood(place) {
   const client = createClient(
     "UnAEAJOmvin6ezWwZ9FA8yplnMt9oHFOVfU3Ms4woY62XrsLJ49pzWSc"
   );
-  const query = place+" food";
+  const query = place;
 
   const response = await client.photos.search({ query, per_page: 1 });
   // console.log(response);
