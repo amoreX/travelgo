@@ -70,7 +70,7 @@ export default function Content() {
       <div id="container">
         <div id="noti">
           <div id="left">{pp.toLowerCase()}</div>
-          <div id="right">{search_icon}</div>
+          <div id="right" onClick={()=>{window.history.back();}}>{search_icon}</div>
         </div>
         {isweather === true ? (
           <Weather toggle={setWeather} data={weatherData} />
