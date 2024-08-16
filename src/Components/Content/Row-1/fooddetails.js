@@ -28,15 +28,12 @@ export default function Food({ city }) {
 
   useEffect(() => {
     const gettingFoods = async () => {
-      try {
+      
         setTimeout(async () => {
           let q = await FoodTry(city);
           setFoods(q.split(","));
-        }, 10000);
-      } catch (err) {
-        setError(err); // Store the error if it occurs
-        console.error("Error fetching food options:", err); // Log the error for debugging
-      }
+        }, 5000);
+      
     };
 
     gettingFoods();
