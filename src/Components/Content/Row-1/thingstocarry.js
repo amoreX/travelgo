@@ -43,7 +43,7 @@ export default function Things({ city }) {
                 <div id="each-thing">
                   {ind <= 6 ? (
                     <>
-                      <motion.span style={{marginLeft:"20px",marginTop:"2px"}}
+                      <motion.span style={{marginLeft:"5%",marginTop:"2px"}}
                       initial={{x:-20,opacity:0}}
                       transition={{type:"tween",delay:0.4+ind*0.1,duration:0.38}}
                       animate={{x:0,opacity:1}}
@@ -63,7 +63,7 @@ export default function Things({ city }) {
 
         {!etiq && <div id="loading">{loading}</div>}
       </div>
-      <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px" ,letterSpacing:"-1px"}}>things to carry</div>
+      <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "1.1vw" ,letterSpacing:"-1px"}}>things to carry</div>
     </div>
   );
 }

@@ -40,7 +40,7 @@ export default function Weather({ toggle, data }) {
           <span
             style={{
               color: "rgba(32, 70, 41, 1)",
-              fontSize: "44px",
+              fontSize: "1.7vw",
               fontWeight: "500",
               textShadow: "4px 4px 12px rgba(0, 0, 0, 0.25)",
               zIndex: "6",
@@ -48,7 +48,7 @@ export default function Weather({ toggle, data }) {
           >
             {data?.current.temperature_2m}°c
           </span>
-          <span style={{ color: "rgba(32, 70, 41, 0.45)" }}>
+          <span style={{ color: "rgba(32, 70, 41, 0.45)",fontSize:"1vw" }}>
             {data?.daily.temperature_2m_max[0]}°c/
             {data?.daily.temperature_2m_min[0]}
             °c
@@ -56,14 +56,14 @@ export default function Weather({ toggle, data }) {
           <span
             style={{
               color: "rgba(32, 70, 41, 1)",
-              fontSize: "32px",
+              fontSize: "1.5vw",
               fontWeight: "500",
               textShadow: "4px 4px 12px rgba(0, 0, 0, 0.25)",
             }}
           >
             mostly cloudy
           </span>
-          <span style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "20px" }}>
+          <span style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "1.1vw" }}>
             feels like {data?.current.apparent_temperature}°c
           </span>
         </div>
@@ -79,7 +79,7 @@ export default function Weather({ toggle, data }) {
           <span
             style={{
               color: "rgba(32, 70, 41, 1)",
-              fontSize: "36px",
+              fontSize: "1.7vw",
               fontWeight: "500",
               textShadow: "4px 4px 12px rgba(0, 0, 0, 0.25)",
               zIndex: "6",
@@ -87,7 +87,7 @@ export default function Weather({ toggle, data }) {
           >
             {((data?.daily.temperature_2m_max[index+1]+data?.daily.temperature_2m_min[index+1])/2).toFixed(1)}°c
           </span>
-          <span style={{ color: "rgba(32, 70, 41, 0.45)" }}>
+          <span style={{ color: "rgba(32, 70, 41, 0.45)",fontSize:"1vw" }}>
             {data?.daily.temperature_2m_max[index+1]}°c/
             {data?.daily.temperature_2m_min[index+1]}
             °c
@@ -95,18 +95,18 @@ export default function Weather({ toggle, data }) {
           <span
             style={{
               color: "rgba(32, 70, 41, 1)",
-              fontSize: "24px",
+              fontSize: "1.5vw",
               fontWeight: "500",
               textShadow: "4px 4px 12px rgba(0, 0, 0, 0.25)",
             }}
           >
             mostly cloudy
           </span>
-          <span style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "16px" }}>
-            feels like {data?.daily.temperature_2m_max[index+1]+-(Math.floor(Math.random()*4))}°c
+          <span style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "1.1vw" }}>
+            feels like {(data?.daily.temperature_2m_max[index+1]-(Math.floor(Math.random()*4))).toFixed(1)}°c
           </span>
             </div>
-            <div id="title">{dayname}</div>
+            <div id="title" style={{fontSize:"1.1vw"}}>{dayname}</div>
           </div>;
         })}
       </div>

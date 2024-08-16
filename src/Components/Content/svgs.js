@@ -2,8 +2,8 @@ export const ss=(
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="160px"
-      height="140px"
+      width="10vw"
+      height="16vh"
       viewBox="0 0 32 32"
       enableBackground="new 0 0 0 0"
       version="1.1"

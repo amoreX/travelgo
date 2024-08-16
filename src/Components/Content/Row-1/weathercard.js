@@ -28,7 +28,7 @@ export default function WeatherCard({ transition, data }) {
           <span
             style={{
               color: "rgba(32, 70, 41, 1)",
-              fontSize: "44px",
+              fontSize: "1.7vw",
               fontWeight: "500",
               textShadow: "4px 4px 12px rgba(0, 0, 0, 0.25)",
               zIndex: "6",
@@ -36,7 +36,7 @@ export default function WeatherCard({ transition, data }) {
           >
             {data?.current.temperature_2m}°c
           </span>
-          <span style={{ color: "rgba(32, 70, 41, 0.45)" }}>
+          <span style={{ color: "rgba(32, 70, 41, 0.45)",fontSize:"1vw" }}>
             {data?.daily.temperature_2m_max[0]}°c/
             {data?.daily.temperature_2m_min[0]}
             °c
@@ -44,14 +44,14 @@ export default function WeatherCard({ transition, data }) {
           <span
             style={{
               color: "rgba(32, 70, 41, 1)",
-              fontSize: "32px",
+              fontSize: "1.5vw",
               fontWeight: "500",
               textShadow: "4px 4px 12px rgba(0, 0, 0, 0.25)",
             }}
           >
             mostly cloudy
           </span>
-          <span style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "20px" }}>
+          <span style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "1.1vw" }}>
             feels like {data?.current.apparent_temperature}°c
           </span>
         </div>
@@ -59,7 +59,7 @@ export default function WeatherCard({ transition, data }) {
       {!data && <div id="loading">{loading}</div>}
       <div
         id="title"
-        style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px" }}
+        style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "1.1vw" }}
       >
         weather
       </div>

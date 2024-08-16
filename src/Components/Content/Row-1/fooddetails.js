@@ -65,6 +65,7 @@ export default function Food({ city ,changeD}) {
             return (
               <div id="foo" key={ind}>
                 {picUrl && ( // Conditionally render image if available
+                <div id="picture">
                   <motion.img
                     src={picUrl}
                     alt="loading..."
@@ -77,6 +78,8 @@ export default function Food({ city ,changeD}) {
                     animate={{ scale: 1, opacity: 1 }}
                     onClick={()=>changeD(name,description)}
                   />
+
+                </div>
                 )}
                 <motion.div
                   id="cook-food"
@@ -88,11 +91,11 @@ export default function Food({ city ,changeD}) {
                   }}
                   animate={{ y: 0, opacity: 1 }}
                 >
-                  <div id="name" style={{ fontSize: "20px" }}>
+                  <div id="name" style={{ fontSize: "1.3vw" }}>
                     {name.toLowerCase().substring(0,19)}
                   </div>
-                  <div id="desc" style={{ color: "grey", fontSize: "16px" }}>
-                    {description.substring(0, 60)}
+                  <div id="desc" style={{ color: "grey", fontSize: "1vw" }}>
+                    {description.substring(0, 70)}
                     {description.length > 70 ? "..." : null}
                   </div>
                 </motion.div>
@@ -106,7 +109,7 @@ export default function Food({ city ,changeD}) {
 
       <div
         id="title"
-        style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px",letterSpacing:"-1px" }}
+        style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "1vw",letterSpacing:"-1px" }}
       >
         food to try
       </div>
