@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { FoodTry } from "../../Utils/foodtry";
 import { Details } from "../../Utils/fooddesc";
 import { motion } from "framer-motion";
-import { GettingPictures } from "../../Utils/gettingpictures";
-
+import { GettingPicturesFood } from "../../Utils/gettingpicturesfood";
 export default function Food({ city }) {
   const [foods, setFoods] = useState(null);
   const [foodDetails, setFoodDetails] = useState(null);
@@ -41,8 +40,8 @@ export default function Food({ city }) {
       const getFoodandDetails = async () => {
         const promises = foods.map(async (food) => {
           const description = await Details(food);
-          // const picUrl = await GettingPictures(food);
-          return { name: food, description };
+          const picUrl = await GettingPicturesFood(food);
+          return { name: food, description,picUrl };
         });
 
         const updatedDetails = await Promise.all(promises);
@@ -53,22 +52,7 @@ export default function Food({ city }) {
     }
   }, [foods]);
 
-  useEffect(() => {
-    if (foodDetails) {
-      const getFoodPictures = async () => {
-        const updatedFoodDetails = foodDetails.map(async (foodObj) => {
-          const pictureUrl = await GettingPictures(foodObj.name);
-          return { ...foodObj, pictureUrl };
-        });
-
-        const finalDetails = await Promise.all(updatedFoodDetails);
-        setFoodDetails(finalDetails); // Update state with pictures
-      };
-
-      getFoodPictures();
-    }
-  }, [foodDetails]);
-
+  
   useEffect(() => {
     console.log(foodDetails);
   }, [foodDetails]);
@@ -77,12 +61,12 @@ export default function Food({ city }) {
       <div id="content-foods">
         {foodDetails != null ? (
           foodDetails.map((placeObj, ind) => {
-            const { name, description, pictureUrl } = placeObj;
+            const { name, description, picUrl } = placeObj;
             return (
               <div id="foo" key={ind}>
-                {pictureUrl && ( // Conditionally render image if available
+                {picUrl && ( // Conditionally render image if available
                   <motion.img
-                    src={pictureUrl}
+                    src={picUrl}
                     alt="loading..."
                     initial={{ scale: 0.1, opacity: 0 }}
                     transition={{

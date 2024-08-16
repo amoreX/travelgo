@@ -30,7 +30,7 @@ export default function Things({ city }) {
   }, []);
 
   useEffect(() => {
-    console.log(etiq);
+    // console.log(etiq);
   }, [etiq]);
 
   return (
