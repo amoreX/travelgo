@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Travel } from "../../Utils/gettingTravel";
 import { GettingPictures } from "../../Utils/gettingCitypicture";
-export default function Dynamic({ city }) {
+export default function Dynamic({ city,dynamic,changeD }) {
     const loading = (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ export default function Dynamic({ city }) {
       );
   const [travelDetails, setTravelDetails] = useState(null);
   const [picUrl, setPicUrl] = useState(null);
+
   useEffect(() => {
     const gettingTravelDetails = async () => {
       let h = await Travel(city);
@@ -30,6 +31,14 @@ export default function Dynamic({ city }) {
     };
     gettingTravelDetails();
   });
+
+  useEffect(()=>{
+    if(dynamic){
+      setPicUrl(dynamic[0]);
+      setTravelDetails(dynamic[1]);
+
+    }
+  },[dynamic])
 
   return (
     <div id="dynamic">

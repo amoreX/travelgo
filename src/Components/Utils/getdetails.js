@@ -9,7 +9,7 @@ export async function Details(place) {
     return cache[place];
   }
 
-  let prompt = `give short description about ${place} within 10 to 16 words`;
+  let prompt = `give short description about ${place} within 240 characters exact`;
   const result = await model.generateContent(prompt);
   cache[place] = result.response.text();
   return(result.response.text());
