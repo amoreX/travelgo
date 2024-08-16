@@ -32,7 +32,7 @@ export default function Food({ city }) {
         setTimeout(async () => {
           let q = await FoodTry(city);
           setFoods(q.split(","));
-        }, 2000);
+        }, 10000);
       } catch (err) {
         setError(err); // Store the error if it occurs
         console.error("Error fetching food options:", err); // Log the error for debugging
@@ -56,7 +56,7 @@ export default function Food({ city }) {
           setFoodDetails(updatedDetails);
         } catch (err) {
           setError(err); // Store the error if it occurs
-          console.error("Error fetching food details:", err); // Log the error for debugging
+          // console.error("Error fetching food details:", err); // Log the error for debugging
         }
       };
 
