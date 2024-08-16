@@ -3,7 +3,7 @@ import { Details } from "../../Utils/getdetails";
 import { motion } from "framer-motion";
 import {GettingPictures} from "../../Utils/gettingpictures";
 import { useState, useEffect } from "react";
-export default function Placestovisit({ city }) {
+export default function Placestovisit({ city,changeD }) {
   const loading = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +62,7 @@ export default function Placestovisit({ city }) {
                                 initial={{scale:0.1,opacity:0}}
                                 transition={{type:"tween",delay:ind*0.1,duration:0.28}}
                                 animate={{scale:1,opacity:1}}
+                                onClick={()=>{changeD(pictureUrl,description)}}
                 />
                 <motion.div id="cook"
                 initial={{y:20,opacity:0}}

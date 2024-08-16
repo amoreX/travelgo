@@ -32,6 +32,7 @@ export default function Content() {
   const [isweather, setIsweather] = useState(false);
   const [weatherData, setWeatherdata] = useState(null);
   const [transition, setTransition] = useState(false);
+  const [dynamic,setDynamic]=useState(null);
   const setWeather = () => {
     if (transition) {
       setTimeout(() => {
@@ -57,6 +58,13 @@ export default function Content() {
   useEffect(()=>{
     // console.log(weatherData);
   },[weatherData])
+
+
+  const changeDynamo=(pic,desc)=>{
+    // console.log(pic);
+    // console.log(desc);
+    setDynamic([pic,desc]);
+  }
   return (
     <div id="main-container-content">
       <div id="container">
@@ -76,7 +84,7 @@ export default function Content() {
             >
               <WeatherCard transition={setWeather} data={weatherData}/>
               
-              <Food city={pp}/>
+              <Food city={pp} changeD={changeDynamo}/>
               <Things city={pp}/>
             </motion.div>
             <motion.div id="row-2"
@@ -84,8 +92,8 @@ export default function Content() {
             transition={{ type: "tween", duration: 0.38 }}
             animate={{ x: transition === false ? 0 : 2000 }}
             >
-              <Dynamic city={pp} />
-              <Placestovisit city={pp} />
+              <Dynamic city={pp} dynamic={dynamic} changeD={changeDynamo} />
+              <Placestovisit city={pp} changeD={changeDynamo}/>
             </motion.div>
           </div>
         )}

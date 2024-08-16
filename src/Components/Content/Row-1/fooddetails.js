@@ -3,7 +3,7 @@ import { FoodTry } from "../../Utils/foodtry";
 import { Details } from "../../Utils/fooddesc";
 import { motion } from "framer-motion";
 import { GettingPicturesFood } from "../../Utils/gettingpicturesfood";
-export default function Food({ city }) {
+export default function Food({ city ,changeD}) {
   const [foods, setFoods] = useState(null);
   const [foodDetails, setFoodDetails] = useState(null);
 
@@ -75,6 +75,7 @@ export default function Food({ city }) {
                       duration: 0.28,
                     }}
                     animate={{ scale: 1, opacity: 1 }}
+                    onClick={()=>changeD(picUrl,description)}
                   />
                 )}
                 <motion.div
