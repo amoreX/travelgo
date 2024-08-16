@@ -1,16 +1,16 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 const cache = {};
-
-export async function Details(place) {
+export async function Travel(city) {
+  // console.log(city);
   const genAI = new GoogleGenerativeAI("AIzaSyCpSvYvxAYQEGFtfBBMEI4R-9M6V-H_uwM");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  if (cache[place]) {
-    return cache[place];
+  if (cache[city]) {
+    return cache[city];
   }
+  let prompt = `Tell me about ${city} in 250 characters exact, dont give anything extra in response`;
 
-  let prompt = `give short description about ${place} within 10 to 16 words`;
   const result = await model.generateContent(prompt);
-  cache[place] = result.response.text();
+  cache[city] = result.response.text();
   return(result.response.text());
 }

@@ -4,6 +4,7 @@ import Weather from "./weather.js";
 import WeatherCard from "./Row-1/weathercard.js";
 import Placestovisit from "./Row-2/placestovisit.js";
 import Food from "./Row-1/fooddetails.js";
+import Dynamic from "./Row-2/dynamicfuck.js";
 import { useState, useEffect } from "react";
 import { coords } from "../Utils/coords.js";
 import { getcoords } from "../Utils/gettingCoords.js";
@@ -83,7 +84,7 @@ export default function Content() {
             transition={{ type: "tween", duration: 0.38 }}
             animate={{ x: transition === false ? 0 : 2000 }}
             >
-              <div id="weather"></div>
+              <Dynamic city={pp} />
               <Placestovisit city={pp} />
             </motion.div>
           </div>
