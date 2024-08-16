@@ -69,7 +69,7 @@ export default function Placestovisit({ city,changeD }) {
                 transition={{type:"tween",delay:0.4+ind*0.1,duration:0.28}}
                 animate={{y:0,opacity:1}}
                 >
-                <div id="name" style={{fontSize:"20px"}}>{name.substring(0,20)} {(name.length > 20 ? "..." : null)}</div>
+                <div id="name" style={{fontSize:"20px"}}>{name.toLowerCase().substring(0,20)} {(name.length > 20 ? "..." : null)}</div>
                 <div id="desc" style={{color:"grey",fontSize:"16px"}} >{description.substring(0,45)} {(description.length > 70 ? "...more" : null)}</div>
 
                 </motion.div>

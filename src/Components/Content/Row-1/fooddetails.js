@@ -89,7 +89,7 @@ export default function Food({ city ,changeD}) {
                   animate={{ y: 0, opacity: 1 }}
                 >
                   <div id="name" style={{ fontSize: "20px" }}>
-                    {name.substring(0,19)}
+                    {name.toLowerCase().substring(0,19)}
                   </div>
                   <div id="desc" style={{ color: "grey", fontSize: "16px" }}>
                     {description.substring(0, 60)}

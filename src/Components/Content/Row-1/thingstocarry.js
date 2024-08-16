@@ -47,7 +47,7 @@ export default function Things({ city }) {
                       initial={{x:-20,opacity:0}}
                       transition={{type:"tween",delay:0.4+ind*0.1,duration:0.38}}
                       animate={{x:0,opacity:1}}
-                      >{each}</motion.span>
+                      >{each.toLowerCase()}</motion.span>
                       <motion.div id="bar" 
                       initial={{width:"5%",opacity:0}}
                       transition={{type:"tween",delay:0.4+ind*0.1,duration:0.38}}
