@@ -89,7 +89,7 @@ export default function Food({ city ,changeD}) {
                   animate={{ y: 0, opacity: 1 }}
                 >
                   <div id="name" style={{ fontSize: "20px" }}>
-                    {name}
+                    {name.substring(0,19)}
                   </div>
                   <div id="desc" style={{ color: "grey", fontSize: "16px" }}>
                     {description.substring(0, 60)}
@@ -106,7 +106,7 @@ export default function Food({ city ,changeD}) {
 
       <div
         id="title"
-        style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px" }}
+        style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px",letterSpacing:"-1px" }}
       >
         food to try
       </div>
