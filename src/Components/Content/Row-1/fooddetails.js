@@ -75,7 +75,7 @@ export default function Food({ city ,changeD}) {
                       duration: 0.28,
                     }}
                     animate={{ scale: 1, opacity: 1 }}
-                    onClick={()=>changeD(picUrl,description)}
+                    onClick={()=>changeD(name,description)}
                   />
                 )}
                 <motion.div
