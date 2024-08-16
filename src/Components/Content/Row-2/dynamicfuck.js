@@ -21,6 +21,8 @@ export default function Dynamic({ city,dynamic,changeD }) {
       );
   const [travelDetails, setTravelDetails] = useState(null);
   const [picUrl, setPicUrl] = useState(null);
+  const [newpic,setNew]=useState(null);
+  const [newTravel,setNewTravel]=useState(null);
 
   useEffect(() => {
     const gettingTravelDetails = async () => {
@@ -34,26 +36,31 @@ export default function Dynamic({ city,dynamic,changeD }) {
 
   useEffect(()=>{
     if(dynamic){
-      setPicUrl(dynamic[0]);
-      setTravelDetails(dynamic[1]);
+      setNew(dynamic[0]);
+      setNewTravel(dynamic[1]);
     }
-  },[dynamic])
+  },[dynamic]);
+
 
   return (
     <div id="dynamic">
       {travelDetails && (
         <div id="history">
-          <motion.img src={picUrl} alt="getting"
+          <motion.img src={newpic==null?picUrl:newpic} alt="getting"
           initial={{scale:1,opacity:0}}
           transition={{type:"tween",duration:0.19}}
           animate={{scale:1,opacity:1}}
+          onClick={()=>{
+            setNew(picUrl);
+            setNewTravel(travelDetails);
+          }}
           />
           <motion.div id="context"
           initial={{y:30,scale:0.1}}
           transition={{type:"tween",delay:0.5,duration:0.29}}
           animate={{y:0,scale:1}}
 
-          >{travelDetails}</motion.div>
+          >{newTravel==null?travelDetails:newTravel}</motion.div>
 
         </div>
       )}
