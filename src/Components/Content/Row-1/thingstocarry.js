@@ -63,7 +63,7 @@ export default function Things({ city }) {
 
         {!etiq && <div id="loading">{loading}</div>}
       </div>
-      <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px" }}>things to carry</div>
+      <div id="title" style={{ color: "rgba(32, 70, 41, 0.45)", fontSize: "18px" ,letterSpacing:"-1px"}}>things to carry</div>
     </div>
   );
 }
