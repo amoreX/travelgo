@@ -24,7 +24,7 @@ export default function Things({ city }) {
   useEffect(() => {
     const gettingEtiq = async () => {
       let g = await Etiq(city);
-      setEtiq(g.split(","));
+      setEtiq(g.split(","));   
     };
     gettingEtiq();
   }, []);

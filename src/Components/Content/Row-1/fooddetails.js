@@ -26,7 +26,7 @@ export default function Food({ city ,changeD}) {
 
   useEffect(() => {
     const gettingFoods = async () => {
-      setTimeout(async () => {
+      setTimeout(async () => {                  
         let q = await FoodTry(city);
         setFoods(q.split(","));
       }, 100);
