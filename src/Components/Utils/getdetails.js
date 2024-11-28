@@ -2,7 +2,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const cache = {};
 
 export async function Details(place) {
-  const genAI = new GoogleGenerativeAI("AIzaSyCpSvYvxAYQEGFtfBBMEI4R-9M6V-H_uwM");
+  // const genAI = new GoogleGenerativeAI("AIzaSyCpSvYvxAYQEGFtfBBMEI4R-9M6V-H_uwM");
+  const genAI = new GoogleGenerativeAI("AIzaSyCLzjo4Ka7YQhZW3sNJgWCPUmlZJCPt9R4");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   if (cache[place]) {

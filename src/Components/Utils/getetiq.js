@@ -3,7 +3,8 @@ const cache = {};
 
 export async function Etiq(city) {
 //   console.log(city);
-  const genAI = new GoogleGenerativeAI("AIzaSyBYm_TyKpW2rrhyOZSekvc1BlUP9_SKJYA");
+  // const genAI = new GoogleGenerativeAI("AIzaSyBYm_TyKpW2rrhyOZSekvc1BlUP9_SKJYA");
+  const genAI = new GoogleGenerativeAI("AIzaSyBerHhY82HxUFAC5xSd5_kiYolPlKA8eQI");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   if (cache[city]) {
     return cache[city];
