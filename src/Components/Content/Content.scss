@@ -84,12 +84,12 @@ body {
             0% {
               rotate: 0deg;
             }
-          
+
             100% {
               rotate: 360deg;
             }
           }
-          
+
         }
         #foodtotry {
           height: 100%;
@@ -123,7 +123,7 @@ body {
               width: 30%;
               height: 100%;
               gap: 4px;
-              
+
               #picture{
                 img {
                   height: 100%;
@@ -187,7 +187,7 @@ body {
             position: relative;
             overflow: hidden;
             #things {
-              
+
               #each-thing {
                 display: flex;
                 flex-direction: column;
@@ -415,7 +415,7 @@ body {
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
-          height: 95%;
+          height: fit-content;
           width: 50%;
           box-sizing: border-box;
           padding-block: 10px;
@@ -451,7 +451,7 @@ body {
           height:4vh;
           // width:100vw;
           padding-inline: 30px;
-          
+
         }
         #content{
           width:98vw;
@@ -498,7 +498,7 @@ body {
           #dynamic{
             flex:1;
             #history{
-              
+
               #context{
                 background-color: red;
                 letter-spacing: 1px;
@@ -510,7 +510,7 @@ body {
                 width: 100%;
                 align-items: center;
                 justify-content: center;
-                
+
               }
             }
           }
@@ -538,7 +538,7 @@ body {
             }
           }
         }
-        
+
       }
   }
 }
