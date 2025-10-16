@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { getOpenAIKey } from "./getOpenAIKey";
 const cache = {};
 
 function extractTextFromResponse(res) {
@@ -14,10 +15,8 @@ function extractTextFromResponse(res) {
 }
 
 export async function Details(place) {
-  const client = new OpenAI({
-    apiKey: process.env.REACT_APP_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
-    dangerouslyAllowBrowser: true,
-  });
+  const apiKey = await getOpenAIKey();
+  const client = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
   if (cache[place]) {
     return cache[place];
