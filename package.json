@@ -9,7 +9,10 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.3",
     "framer-motion": "^11.2.12",
+<<<<<<< HEAD
     "openai": "^6.3.0",
+=======
+>>>>>>> 7991ef5ce2798150f548e22620b94819b2f9e010
     "pexels": "^1.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
