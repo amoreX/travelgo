@@ -1,18 +1,35 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import OpenAI from "openai";
 const cache = {};
 
-export async function FoodTry(city) {
-	//   console.log(city);
-	// const genAI = new GoogleGenerativeAI("AIzaSyDwh90FSOOwpDCDKomcG2NgGWBVFdzqF4Q");
-	const genAI = new GoogleGenerativeAI("AIzaSyD8WLlwM5MgqSaZAIypkAHjt5E7E9hK4Dw");
-	//AIzaSyDsbmoRIMVz6e5iCs41dbgPblrj4IlTnyU -< new one
-	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-	if (cache[city]) {
-		return cache[city];
-	}
-	let prompt = `give 3 foods to try in  ${city}, give only the names and seperate them by comma`;
+function extractTextFromResponse(res) {
+  if (!res) return "";
+  if (res.output_text) return res.output_text;
+  if (res.output && Array.isArray(res.output)) {
+    const parts = res.output.flatMap((o) =>
+      (o.content || []).map((c) => c.text || c.message || "")
+    );
+    return parts.join("");
+  }
+  return "";
+}
 
-	const result = await model.generateContent(prompt);
-	cache[city] = result.response.text();
-	return result.response.text();
+export async function FoodTry(city) {
+  const client = new OpenAI({
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
+    dangerouslyAllowBrowser: true,
+  });
+
+  if (cache[city]) {
+    return cache[city];
+  }
+  let prompt = `give 3 foods to try in  ${city}, give only the names and seperate them by comma`;
+
+  const result = await client.responses.create({
+    model: "gpt-4o-mini",
+    input: prompt,
+  });
+
+  const text = extractTextFromResponse(result);
+  cache[city] = text;
+  return text;
 }

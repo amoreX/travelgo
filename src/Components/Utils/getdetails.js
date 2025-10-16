@@ -1,17 +1,38 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import OpenAI from "openai";
 const cache = {};
 
+function extractTextFromResponse(res) {
+  if (!res) return "";
+  if (res.output_text) return res.output_text;
+  if (res.output && Array.isArray(res.output)) {
+    const parts = res.output.flatMap((o) =>
+      (o.content || []).map((c) => c.text || c.message || "")
+    );
+    return parts.join("");
+  }
+  return "";
+}
+
 export async function Details(place) {
-	// const genAI = new GoogleGenerativeAI("AIzaSyCpSvYvxAYQEGFtfBBMEI4R-9M6V-H_uwM");
-	const genAI = new GoogleGenerativeAI("AIzaSyDsbmoRIMVz6e5iCs41dbgPblrj4IlTnyU");
-	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const client = new OpenAI({
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
+    dangerouslyAllowBrowser: true,
+  });
 
-	if (cache[place]) {
-		return cache[place];
-	}
+  if (cache[place]) {
+    return cache[place];
+  }
 
-	let prompt = `give short description about ${place} within 240 characters exact`;
-	const result = await model.generateContent(prompt);
-	cache[place] = result.response.text();
-	return result.response.text();
+  const prompt = `give short description about ${place} within 240 characters exact`;
+  const result = await client.responses.create({
+    model: "gpt-4o-mini",
+    input: prompt,
+  });
+  const text =
+    result.output_text ||
+    (result.output &&
+      result.output[0]?.content?.map((c) => c.text || "").join("")) ||
+    "";
+  cache[place] = text;
+  return text;
 }

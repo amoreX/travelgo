@@ -1,20 +1,37 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import OpenAI from "openai";
 const cache = {};
+
+function extractTextFromResponse(res) {
+  // safe extraction for multiple possible response shapes
+  if (!res) return "";
+  if (res.output_text) return res.output_text;
+  if (res.output && Array.isArray(res.output)) {
+    const parts = res.output.flatMap((o) =>
+      (o.content || []).map((c) => c.text || c.message || "")
+    );
+    return parts.join("");
+  }
+  if (res.output?.[0]?.content?.[0]?.text) return res.output[0].content[0].text;
+  return "";
+}
+
 export async function Travel(city) {
-  // console.log(city);
-  // const genAI = new GoogleGenerativeAI("AIzaSyCpSvYvxAYQEGFtfBBMEI4R-9M6V-H_uwM");
-  const genAI = new GoogleGenerativeAI(
-    "AIzaSyAxWhVJfD7fw1RLuP86qNMbflH2N7gcchY",
-  );
-  //new one -> AIzaSyBYm_TyKpW2rrhyOZSekvc1BlUP9_SKJYA
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+  const client = new OpenAI({
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
+    dangerouslyAllowBrowser: true,
+  });
 
   if (cache[city]) {
     return cache[city];
   }
   let prompt = `Tell me about ${city} in 250 characters exact, dont give anything extra in response`;
 
-  const result = await model.generateContent(prompt);
-  cache[city] = result.response.text();
-  return result.response.text();
+  const result = await client.responses.create({
+    model: "gpt-4o-mini",
+    input: prompt,
+  });
+
+  const text = extractTextFromResponse(result);
+  cache[city] = text;
+  return text;
 }

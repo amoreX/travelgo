@@ -1,17 +1,35 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import OpenAI from "openai";
 const cache = {};
+
+function extractTextFromResponse(res) {
+  if (!res) return "";
+  if (res.output_text) return res.output_text;
+  if (res.output && Array.isArray(res.output)) {
+    const parts = res.output.flatMap((o) =>
+      (o.content || []).map((c) => c.text || c.message || "")
+    );
+    return parts.join("");
+  }
+  return "";
+}
+
 export async function Visit(city) {
-	// console.log(city);
-	// const genAI = new GoogleGenerativeAI("AIzaSyCpSvYvxAYQEGFtfBBMEI4R-9M6V-H_uwM");
-	const genAI = new GoogleGenerativeAI("AIzaSyAxWhVJfD7fw1RLuP86qNMbflH2N7gcchY");
-	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const client = new OpenAI({
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
+    dangerouslyAllowBrowser: true,
+  });
 
-	if (cache[city]) {
-		return cache[city];
-	}
-	let prompt = `give 4 places to visit in ${city}, give only the names and seperate them by comma`;
+  if (cache[city]) {
+    return cache[city];
+  }
+  let prompt = `give 4 places to visit in ${city}, give only the names and seperate them by comma`;
 
-	const result = await model.generateContent(prompt);
-	cache[city] = result.response.text();
-	return result.response.text();
+  const result = await client.responses.create({
+    model: "gpt-4o-mini",
+    input: prompt,
+  });
+
+  const text = extractTextFromResponse(result);
+  cache[city] = text;
+  return text;
 }

@@ -13,24 +13,24 @@ function extractTextFromResponse(res) {
   return "";
 }
 
-export async function Details(place) {
-  // Use REACT_APP_OPENAI_API_KEY for frontend builds, fallback to OPENAI_API_KEY for server
+export async function askAI(question, city) {
+  const cacheKey = `${city}::${question}`;
+  if (cache[cacheKey]) {
+    return cache[cacheKey];
+  }
+
   const client = new OpenAI({
     apiKey: process.env.REACT_APP_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
     dangerouslyAllowBrowser: true,
   });
 
-  if (cache[place]) {
-    return cache[place];
-  }
-
-  const prompt = `give short description about ${place} within 250 characters exact`;
+  const prompt = `Answer the following question about ${city}: ${question}`;
   const result = await client.responses.create({
     model: "gpt-4o-mini",
     input: prompt,
   });
 
   const text = extractTextFromResponse(result);
-  cache[place] = text;
+  cache[cacheKey] = text;
   return text;
 }
